@@ -3,7 +3,7 @@ const db = require('../models/db');
 //GET --> MARCAS
 
 exports.listarProductos = async (req, res) => {
-    const sql = 'SELECT * FROM productos';
+    const sql = 'SELECT productos.nombre_producto as producto,productos.cantidad as cantidad, productos.precio as precio,productos.descripcion as descripcion, productos.imagen as imagen,categorias.nombre_categoria as categoria,marcas.nombre_marca as marca, estados.nombre_estado as estado FROM productos INNER JOIN categorias ON productos.id_categoria = categorias.id_categoria INNER JOIN marcas ON productos.id_marca = marcas.id_marca INNER JOIN estados ON productos.estado = estados.id_estado';
     try {
         const [productos,fields] = await db.query(sql);
         res.status(200).json(productos);

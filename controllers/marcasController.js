@@ -3,7 +3,7 @@ const db = require('../models/db');
 //GET --> MARCAS
 
 exports.listarMarcas = async (req, res) => {
-    const sql = 'SELECT * FROM marcas';
+    const sql = 'SELECT nombre_marca FROM marcas';
     try {
         const [marcas,fields] = await db.query(sql);
         res.status(200).json(marcas);

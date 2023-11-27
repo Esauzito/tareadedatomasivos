@@ -3,7 +3,7 @@ const db = require('../models/db');
 //GET --> MARCAS
 
 exports.listarUsuarios = async (req, res) => {
-    const sql = 'SELECT * FROM usuarios';
+    const sql = 'SELECT usuarios.nombre_usuario as nombre, usuarios.apellido_usuario as apellido,usuarios.email as email, roles.nombre_rol as rol FROM usuarios INNER JOIN roles ON usuarios.id_rol = roles.id_rol';
     try {
         const [usuarios,fields] = await db.query(sql);
         res.status(200).json(usuarios);

@@ -4,7 +4,7 @@ const { param } = require('../routes/categoriaRoutes');
 //GET --> CATEGORIAS
 
 exports.listarCategorias = async (req, res) => {
-    const sql = 'SELECT * FROM categorias';
+    const sql = 'SELECT nombre_categoria FROM categorias';
     try {
         const [categorias,fields] = await db.query(sql);
         res.status(200).json(categorias);

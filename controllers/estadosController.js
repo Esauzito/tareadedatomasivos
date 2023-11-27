@@ -1,9 +1,9 @@
 const db = require('../models/db');
 
-//GET --> MARCAS
+//GET --> ESTADOS
 
 exports.listarEstados = async (req, res) => {
-    const sql = 'SELECT * FROM estados';
+    const sql = 'SELECT nombre_estado FROM estados';
     try {
         const [estados,fields] = await db.query(sql);
         res.status(200).json(estados);
